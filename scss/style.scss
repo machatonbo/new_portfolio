@@ -1,0 +1,203 @@
+@use 'header' as *;
+@use 'common' as *;
+@use 'footer' as *;
+@use 'variables' as *;
+@use 'modules' as *;
+
+.hero {
+  position: relative; // ::beforeを重ねるため必須
+  width: 100%;
+  height: 100dvh;
+  background: url(../img/namroud-gorguis-FZWivbri0Xk-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 背景を少し暗くする黒半透明オーバーレイ
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.3); // 30%黒で暗くする
+    z-index: 1; // hero-text より下に配置
+  }
+
+  &-text {
+    position: relative; // z-index のため必須
+    z-index: 2; // ::before より上に
+    text-align: center;
+    display: block;
+    padding: 24px; // 黒背景が見えるよう余白追加
+    background: rgba(0, 0, 0, 0.4); // 半透明の黒背景
+    border-radius: 12px; // 角丸でおしゃれに
+    margin-bottom: 45px;
+
+    h1, p {
+      color: #fff; // 白文字
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); // ドロップシャドウ
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      font-weight: bold; // 太字
+    }
+
+    p {
+      font-size: 24px;
+      font-weight: bold; // 太字
+    }
+  }
+}
+
+.concept{
+  background: $baseColor1;
+  
+  .section-head{
+    margin-bottom: 216px;
+  }
+
+  .concept-text{
+    text-align: center;
+
+    &__head{
+      margin-bottom: 160px;
+    }
+  }
+
+}
+
+.works{
+  &section{
+    padding-bottom: 0;
+  }
+  .section-head{
+    text-align: center;
+  }
+
+  &-items{
+    display: flex;
+    column-gap: 16px;
+    margin-bottom: 96px;
+  }
+
+  &-article{
+    width: calc(100% / 3);
+    font-family: $sans;
+
+    .pictuer-frame{
+      width: 100%;
+      aspect-ratio: 4/3;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    &__img{
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform .5s linear;
+
+      &:hover{
+        transform: scale(1.1);
+      }
+    }
+
+    &__title{
+      margin-bottom: 8px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    &__excerpt{
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+  }
+
+  .btn{
+    margin: 0 auto;
+  }
+}
+
+.section-about{
+  .contents-container{
+    background: $baseColor1;
+    padding: 60px 40px;
+  }
+  .about-content__text {
+  margin-bottom: 16px; // 段落同士に余白をつける
+  line-height: 1.6;    // 行間も調整するとさらに読みやすく
+}
+}
+.about-content{
+  display: flex;
+  justify-content: space-between;
+  column-gap: 16px;
+
+  &__head{
+    margin-bottom: 20px;
+  }
+
+  &__text{
+    font-size: 16px;
+  }
+}
+
+.column-left{
+  width: 50%;
+  // padding-left: 40px;
+  // text-align: left;
+}
+
+.column-right{
+  width: 50%;
+
+  &__photo{
+    width: 100%;
+  }
+}
+
+.section-space{
+  margin-top: 100px;
+  background-color: $baseColor1;
+}
+
+.contact{
+  position: relative;
+  z-index: -2;
+  background: url(../img/footer.jpg) center center no-repeat;
+  width: 100%;
+  padding: 140px 0;
+  background-size: cover;
+
+  &:before{
+    content:'';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $overlay2;
+  }
+
+  &__message{
+    margin-bottom: 40px;
+    margin-right: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: right;
+    
+  }
+
+  .btn{
+    margin: 0 auto;
+    margin-right: 120px;
+  }
+
+}
