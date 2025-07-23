@@ -1,21 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const worksItems = document.querySelectorAll('.works-article');
 
-    const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-active');
-                observer.unobserve(entry.target); // 一度表示されたら監視を停止
-            }
-        });
-    }, {
-        threshold: 0.1 // 要素の10%が表示されたら
-    });
-
-    worksItems.forEach(item => {
-        observer.observe(item);
-    });
-});
 
 $(function() {
   // ハンバーガーメニューをクリックしたときの処理
@@ -26,9 +9,8 @@ $(function() {
     $(this).toggleClass('active');
   });
 });
-
 gsap.fromTo(
-    ".works-grid",
+    ".concept-text",
         1,
         {
             y: 50,
@@ -38,7 +20,24 @@ gsap.fromTo(
             y: 0,
             opacity: 1,
             scrollTrigger: {
-                trigger: ".work-item",
+                trigger: ".concept-text",
+                start: "top center",
+                markers: false
+            }
+        }
+)
+gsap.fromTo(
+    ".works-items",
+        1,
+        {
+            y: 50,
+            opacity: 0
+        },
+        {
+            y: 0,
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".works-items",
                 start: "top center",
                 markers: false
             }
@@ -46,7 +45,7 @@ gsap.fromTo(
 )
 
 gsap.fromTo(
-    ".about-description",
+    ".column-left",
         1,
         {
             x: -100,
@@ -56,14 +55,14 @@ gsap.fromTo(
             x: 0,
             opacity: 1,
             scrollTrigger: {
-                trigger: ".about-description",
+                trigger: ".column-left",
                 start: "top center",
                 markers: false
             }
         }
 )
 gsap.fromTo(
-    ".about-photo",
+    ".column-right",
         1,
         {
             x: 100,
@@ -73,7 +72,7 @@ gsap.fromTo(
             x: 0,
             opacity: 1,
             scrollTrigger: {
-                trigger: ".about-photo",
+                trigger: ".column-right",
                 start: "center center",
                 markers: false
             }

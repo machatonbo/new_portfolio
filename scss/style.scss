@@ -2,6 +2,7 @@
 @use 'common' as *;
 @use 'footer' as *;
 @use 'variables' as *;
+@use 'mixin' as *;
 @use 'modules' as *;
 
 .hero {
@@ -44,11 +45,20 @@
       font-size: 48px;
       margin-bottom: 16px;
       font-weight: bold; // 太字
+      @include mq(sp){
+        font-size: 40px;
+        margin-bottom: 16px;
+        font-weight: bold;
+      }
     }
 
     p {
       font-size: 24px;
       font-weight: bold; // 太字
+      @include mq(sp){
+        font-size: 24px;
+        font-weight: bold;
+      }
     }
   }
 }
